@@ -22,7 +22,7 @@ class App extends React.Component {
     e.preventDefault();
     const city = e.target.elements.city.value;
     const country = e.target.elements.country.value;
-    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}`);
+    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=imperial`);
     const data = await api_call.json();
 
     if (city && country) {
@@ -53,25 +53,38 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        {/*Title component*/}
-        <Titles />
+      <div className="wrapper">
+        <div className="main">
+          <div className="container">
+            <div className="row">
+              <div className="col-xs-5 title-container">
+                {/*Title component*/}
+                <Titles />
+              </div>
+              <div className="col-xs-7 form-container">
 
-        {/* Form component => passing in getWeather function */}
-        <Form getWeather = {this.getWeather} />
+                {/* Form component => passing in getWeather function */}
+                <Form getWeather = {this.getWeather} />
 
-        {/* Weather component => passing in state data */}
-        <Weather
-          temperature = {this.state.temperature}
-          city = {this.state.city}
-          country = {this.state.country}
-          humidity = {this.state.humidity}
-          description = {this.state.description}
-          error = {this.state.error}
-        />
+                {/* Weather component => passing in state data */}
+                <Weather
+                  temperature = {this.state.temperature}
+                  city = {this.state.city}
+                  country = {this.state.country}
+                  humidity = {this.state.humidity}
+                  description = {this.state.description}
+                  error = {this.state.error}
+                />
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       </div>
     );
   }
 }
-
 
 export default App;
