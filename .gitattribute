@@ -1,1 +1,2 @@
-react-weather/App.css linguist-vendored
+special-vendored-path/* linguist-vendored
+App.css linguist-vendored=false
