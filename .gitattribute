@@ -1,1 +1,2 @@
-./react-weather/src/App.css/* linguist-vendored
+* linguist-vendored
+*.js linguist-vendored=false
